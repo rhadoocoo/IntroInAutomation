@@ -10,13 +10,11 @@ import org.openqa.selenium.chrome.ChromeDriver;
 public class Methods extends StepDefinitions {
     ChromeDriver driver;
     Locators locators;
-    public Methods(ChromeDriver driver)
-    {
+    public Methods(ChromeDriver driver)    {
         this.driver=driver;
         locators=new Locators();
     }
-    public void pushButton (String buttonID)
-    {
+    public void pushButton (String buttonID)    {
 
         By buttonLocator = locators.numeButon(buttonID);
         WebElement element = driver.findElement(buttonLocator);
@@ -24,7 +22,6 @@ public class Methods extends StepDefinitions {
         element.click();
 
     }
-
     public void searchItem(String searchElement)  {
         WebElement campCautare =driver.findElement(By.id("searchInput"));
         campCautare.sendKeys(searchElement);
