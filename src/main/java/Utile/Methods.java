@@ -25,11 +25,12 @@ public class Methods extends StepDefinitions {
 
     }
 
-    public void searchItem(String searchElement){
+    public void searchItem(String searchElement)  {
         WebElement campCautare =driver.findElement(By.id("searchInput"));
         campCautare.sendKeys(searchElement);
         WebElement butonCauta=driver.findElement(By.xpath("/html/body/main/div[2]/form/fieldset/button"));
         butonCauta.submit();
+
 
 }
 }

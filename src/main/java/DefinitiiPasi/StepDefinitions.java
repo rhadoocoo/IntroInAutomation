@@ -9,6 +9,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 
+import java.util.Objects;
+
 public class StepDefinitions {
     ChromeDriver driver;
     Methods methods;
@@ -25,13 +27,13 @@ public class StepDefinitions {
     public void accesezPagina(String url)
     {
         driver.get(url);
+
     }
 
     @Then("Pagina {string} este afisata corect")
-    public void paginaAfisataCorect(String expectedUrl)
-    {
+    public void paginaAfisataCorect(String expectedUrl) throws InterruptedException {
         String actualUrl = driver.getCurrentUrl();
-        assert actualUrl.equals(expectedUrl) : "URL-ul nu este cel așteptat";
+       if (!Objects.equals(expectedUrl, actualUrl)) throw new AssertionError("URL nu este cel asteptat");
     }
 
     @Then("Inchid browserul")
@@ -51,8 +53,7 @@ public class StepDefinitions {
         dropdownCountry.selectByVisibleText("Română");
     }
     @And ("Vreau sa caut informatii despre {string}")
-    public void cautare(String elementCautat)
-    {
+    public void cautare(String elementCautat) throws InterruptedException {
         methods.searchItem(elementCautat);
     }
 }
